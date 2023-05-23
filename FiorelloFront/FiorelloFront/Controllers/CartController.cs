@@ -1,5 +1,6 @@
 ﻿using FiorelloFront.Data;
 using FiorelloFront.Models;
+using FiorelloFront.Services.Interfaces;
 using FiorelloFront.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,12 +11,15 @@ namespace FiorelloFront.Controllers
 {
     public class CartController : Controller
     {
-        private readonly AppDbContext _context;
         private readonly IHttpContextAccessor _accessor;
-        public CartController(AppDbContext context, IHttpContextAccessor accessor)
+        private readonly IProductService _productService;
+        private readonly IBasketService _basketService;
+
+        public CartController( IHttpContextAccessor accessor,IProductService productService, IBasketService basketService)
         {
-            _context = context;
             _accessor = accessor;
+            _productService = productService;
+            _basketService = basketService;
         }
         public async Task<IActionResult> Index()
         {
@@ -26,7 +30,7 @@ namespace FiorelloFront.Controllers
                 List<BasketVM> basketDatas = JsonConvert.DeserializeObject<List<BasketVM>>(_accessor.HttpContext.Request.Cookies["basket"]);
                 foreach (var item in basketDatas)
                 {
-                    var dbProduct = await _context.Products.Include(m => m.ProductImages).FirstOrDefaultAsync(m=>m.Id==item.Id);
+                    var dbProduct = await _productService.GetByIdImagesAsync(item.Id);
 
                     if (dbProduct != null)
                     {
@@ -53,7 +57,7 @@ namespace FiorelloFront.Controllers
         public async Task<IActionResult> Addbasket(int? id)
         {
             if (id is null) return BadRequest();
-            Product product = await _context.Products.FindAsync(id);
+            Product product = await _productService.GetByIdAsync(id);
 
             if(product == null) return NotFound();
 
@@ -104,17 +108,10 @@ namespace FiorelloFront.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [ActionName("Delete")]
         public IActionResult DeleteProductFrombasket(int? id)
         {
-            List<BasketVM> basketDatas = JsonConvert.DeserializeObject<List<BasketVM>>(_accessor.HttpContext.Request.Cookies["basket"]);
-
-            var data=basketDatas.FirstOrDefault(m=>m.Id==id);
-
-            basketDatas.Remove(data);
-
-            _accessor.HttpContext.Response.Cookies.Append("basket",JsonConvert.SerializeObject(basketDatas));
+            _basketService.DeleteProduct(id);
 
             return RedirectToAction(nameof(Index));
         }

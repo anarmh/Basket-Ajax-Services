@@ -1,6 +1,7 @@
 ﻿
 using FiorelloFront.Data;
 using FiorelloFront.Models;
+using FiorelloFront.Services.Interfaces;
 using FiorelloFront.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +14,12 @@ namespace FiorelloFront.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly IHttpContextAccessor _accessor;
+        private readonly IProductService _productService;
 
-        public HomeController(AppDbContext context, IHttpContextAccessor accessor)
+        public HomeController(AppDbContext context,IProductService productService)
         {
             _context = context;
-            _accessor = accessor;
+            _productService = productService;
         }
 
         public async Task<IActionResult> Index()
@@ -27,7 +28,7 @@ namespace FiorelloFront.Controllers
             SliderInfo sliderInfo= await _context.SliderInfos.Where(m=>!m.SoftDelete).FirstOrDefaultAsync();
             IEnumerable<Blog> blogs=await _context.Blogs.Where(m => !m.SoftDelete).OrderByDescending(m=>m.Id).Take(3).ToListAsync();
             IEnumerable<Category> categories=await _context.Categories.Where(m => !m.SoftDelete).ToListAsync();
-            IEnumerable<Product> products = await _context.Products.Include(m=>m.ProductImages).Take(8).Where(m => !m.SoftDelete).ToListAsync();
+            IEnumerable<Product> products =await _productService.GetAllAsync();
             About about=await _context.Abouts.Where(m => !m.SoftDelete).FirstOrDefaultAsync();
             IEnumerable<FlowersExpert> flowersExperts = await _context.FlowersExperts.Where(m => !m.SoftDelete).ToListAsync();
             IEnumerable<Say> says = await _context.Says.Where(m => !m.SoftDelete).ToListAsync();

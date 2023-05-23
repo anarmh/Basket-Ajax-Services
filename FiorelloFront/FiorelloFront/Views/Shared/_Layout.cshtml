@@ -2,7 +2,7 @@
 
 @{
 
-    Dictionary<string,string> datas = _layoutService.GetSettingDatas();
+    LayoutVM datas = _layoutService.GetAllDatas();
 }
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     <link rel="icon" href="img/favicon.png" sizes="192x192" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="~/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/owlcarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="~/owlcarousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="~/css/style.css">
     @await RenderSectionAsync("Css", required:false)
@@ -33,7 +33,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg d-flex d-lg-block justify-content-between d-xl-flex navbar-light py-3 py-lg-0">
                         <a asp-controller="Home" asp-action="index">
-                            <img src="~/img/@datas["HeaderLogo"]" alt="" id="logo">
+                            <img src="~/img/@datas.SettingDatas["HeaderLogo"]" alt="" id="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -167,7 +167,7 @@
                                 <li class="nav-item my-auto shop-cart">
                                     <a asp-controller="Cart" asp-action="Index">
                                           <i class="fas fa-shopping-bag"></i>
-                                        <sup class="rounded-circle">0</sup>
+                                        <sup class="rounded-circle">@datas.BasketCount</sup>
                                          <span>CART ($0)</span>
                                             <ul class="list-unstyled py-3">
                                         <li class="">No products in the cart.</li>
@@ -218,8 +218,8 @@
                             <li><a class="text-black-50" href="">Returns & Refunds</a></li>
                             <li><a class="text-black-50" href="">Online Stores</a></li>
                             <li><a class="text-black-50" href="">Terms & Conditions</a></li>
-                             <li><a class="text-black-50" href="">Phone: @datas["Phone"]</a></li>
-                              <li><a class="text-black-50" href="">Email: @datas["Email"]</a></li>
+                             <li><a class="text-black-50" href="">Phone: @datas.SettingDatas["Phone"]</a></li>
+                              <li><a class="text-black-50" href="">Email: @datas.SettingDatas["Email"]</a></li>
                         </ul>
                     </div>
                 </div>

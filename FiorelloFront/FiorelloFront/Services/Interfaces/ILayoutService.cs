@@ -1,7 +1,9 @@
-﻿namespace FiorelloFront.Services.Interfaces
+﻿using FiorelloFront.ViewModels;
+
+namespace FiorelloFront.Services.Interfaces
 {
     public interface ILayoutService
     {
-        public Dictionary<string, string> GetSettingDatas();
+        public LayoutVM GetAllDatas();
     }
 }
