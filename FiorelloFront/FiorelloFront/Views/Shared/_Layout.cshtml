@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@inject ILayoutService _layoutService
+
+@{
+
+    Dictionary<string,string> datas = _layoutService.GetSettingDatas();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,8 +32,8 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg d-flex d-lg-block justify-content-between d-xl-flex navbar-light py-3 py-lg-0">
-                        <a class="navbar-brand" href="#">
-                            <img src="img/logo.png" alt="" id="logo">
+                        <a asp-controller="Home" asp-action="index">
+                            <img src="~/img/@datas["HeaderLogo"]" alt="" id="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -176,128 +183,20 @@
             </div>
             <div class="mobile-navbar position-absolute shadow-lg h-100 p-5">
                 <i class="fas fa-times fa-lg" id="mobile-navbar-close"></i>
-                <ul class="list-unstyled">
+                @*<ul class="list-unstyled">
                     <li><a href="#">Home <i class="fas fa-caret-right fa-sm"></i></a></li>
-                    <ul class="list-unstyled">
-                        <li class=""><a class="px-1" href="">Home 1</a></li>
-                        <li class=""><a class="px-1" href="">Home 2</a></li>
-                        <li class=""><a class="px-1" href="">Home 3</a></li>
-                    </ul>
+                   
                     <li><a href="#">Pages <i class="fas fa-caret-right fa-sm"></i></a></li>
-                    <ul class="list-unstyled">
-                        <li class=""><a class="px-1" href="">Page 1</a></li>
-                        <li class=""><a class="px-1" href="">Page 2</a></li>
-                        <li class=""><a class="px-1" href="">Page 3</a></li>
-                    </ul>
+                  
                     <li><a href="#">Shop <i class="fas fa-caret-right fa-sm"></i></a></a></li>
-                    <ul class="list-unstyled py-3">
-                        <li class="">
-                            <a class="px-3" href="#">PRODUCT TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP PAGES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                    </ul>
+                    
                     <li><a href="#">Portfolio <i class="fas fa-caret-right fa-sm"></i></a></a></li>
-                    <ul class="list-unstyled py-3">
-                        <li class="">
-                            <a class="px-3" href="#">PRODUCT TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP PAGES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                    </ul>
+                   
                     <li><a href="#">Blog <i class="fas fa-caret-right fa-sm"></i></a></a></li>
-                    <ul class="list-unstyled py-3">
-                        <li class="">
-                            <a class="px-3" href="#">PRODUCT TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP PAGES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                    </ul>
+                   
                     <li><a href="#">Elements <i class="fas fa-caret-right fa-sm"></i></a></a></li>
-                    <ul class="list-unstyled py-3">
-                        <li class="">
-                            <a class="px-3" href="#">PRODUCT TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP PAGES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                        <li class="">
-                            <a class="px-3" href="#">SHOP TYPES <i class="fas fa-caret-right fa-sm"></i></a>
-                        </li>
-                        <ul class="list-unstyled py-3">
-                            <li class=""><a class="px-3" href="">Product Types 1</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 2</a></li>
-                            <li class=""><a class="px-3" href="">Product Types 3</a></li>
-                        </ul>
-                    </ul>
-                </ul>
+                   
+                </ul>*@
             </div>
         </div>
 
@@ -319,6 +218,8 @@
                             <li><a class="text-black-50" href="">Returns & Refunds</a></li>
                             <li><a class="text-black-50" href="">Online Stores</a></li>
                             <li><a class="text-black-50" href="">Terms & Conditions</a></li>
+                             <li><a class="text-black-50" href="">Phone: @datas["Phone"]</a></li>
+                              <li><a class="text-black-50" href="">Email: @datas["Email"]</a></li>
                         </ul>
                     </div>
                 </div>

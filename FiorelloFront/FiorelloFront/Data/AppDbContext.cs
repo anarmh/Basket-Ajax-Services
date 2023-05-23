@@ -21,6 +21,7 @@ namespace FiorelloFront.Data
         public DbSet<Say> Says { get; set; }
         public DbSet<Instagram> Instagrams { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Setting> Settings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,6 +47,26 @@ namespace FiorelloFront.Data
                        Age = 36
                    }
             );
+            modelBuilder.Entity<Setting>().HasData(
+              new Setting
+              {
+                  Id = 1,
+                  Key = "HeaderLogo",
+                  Value = "logo.png"
+              },
+               new Setting
+               {
+                   Id = 2,
+                   Key = "Phone",
+                   Value = "0505728218"
+               },
+                 new Setting
+                 {
+                     Id = 3,
+                     Key = "Email",
+                     Value = "fiorello@gmail.com"
+                 }
+          );
         }
     }
 }
