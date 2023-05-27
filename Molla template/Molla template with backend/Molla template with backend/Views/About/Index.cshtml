@@ -1,4 +1,4 @@
-﻿
+﻿@model AboutVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -112,33 +112,14 @@
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="brands">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand1.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand2.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand3.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand4.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand5.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand6.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand7.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand8.png" alt="">
-                                    </div>
-                                    <div class="col-4">
-                                        <img src="./assets/imgs/Home/brand9.png" alt="">
-                                    </div>
+                                    @foreach (var brand in Model.Brands)
+                                    {
+                                        <div class="col-4">
+                                            <img src="~/assets/imgs/Home/@brand.Logo" alt="">
+                                        </div>
+                                    }
+                                   
+                                   
                                 </div>
                             </div>
                         </div>
@@ -156,57 +137,28 @@
                 </div>
                 <div class="members">
                     <div class="row allmembers owl-carousel owl-theme">
-                        <div class="col-12">
-                            <div class="each-member people">
-                                <img src="./assets/imgs/About/member-1.jpg" alt="">
-                                <h5>Samanta Grey</h5>
-                                <span>Founder & CEO</span>
-                                <div class="hover-info d-none">
-                                    <h5>Samanta Grey</h5>
-                                    <span>Found & CEO</span>
-                                    <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
-                                    <div class="icons">
-                                        <i class="fa-brands fa-facebook-f"></i>
-                                        <i class="fa-brands fa-twitter"></i>
-                                        <i class="fa-brands fa-instagram"></i>
+                        @foreach (var member in Model.TeamMembers)
+                        {
+                            <div class="col-12">
+                                <div class="each-member people">
+                                    <img src="~/assets/imgs/About/@member.Image" alt="">
+                                    <h5>@member.FullName</h5>
+                                    <span>@member.Position</span>
+                                    <div class="hover-info d-none">
+                                        <h5>@member.FullName</h5>
+                                        <span>@member.Position</span>
+                                        <p>@member.Description</p>
+                                        <div class="icons">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                            <i class="fa-brands fa-twitter"></i>
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="each-member people">
-                                <img src="./assets/imgs/About/member-2.jpg" alt="">
-                                <h5>Bruce Sutton</h5>
-                                <span>Sales & Marketing Manager</span>
-                                <div class="hover-info d-none">
-                                    <h5>Bruce Sutton</h5>
-                                    <span>Sales & Marketing Manager</span>
-                                    <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
-                                    <div class="icons">
-                                        <i class="fa-brands fa-facebook-f"></i>
-                                        <i class="fa-brands fa-twitter"></i>
-                                        <i class="fa-brands fa-instagram"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="each-member people">
-                                <img src="./assets/imgs/About/member-3.jpg" alt="">
-                                <h5>Janet Joy</h5>
-                                <span>Product Manager</span>
-                                <div class="hover-info d-none">
-                                    <h5>Janet Joy</h5>
-                                    <span>Product Manager</span>
-                                    <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
-                                    <div class="icons">
-                                        <i class="fa-brands fa-facebook-f"></i>
-                                        <i class="fa-brands fa-twitter"></i>
-                                        <i class="fa-brands fa-instagram"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
+                       
+                        
                     </div>
                 </div>
             </div>

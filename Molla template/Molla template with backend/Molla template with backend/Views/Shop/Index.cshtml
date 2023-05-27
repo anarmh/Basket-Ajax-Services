@@ -1,4 +1,4 @@
-﻿
+﻿@model ShopVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -57,22 +57,19 @@
                                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                                             aria-labelledby="panelsStayOpen-headingOne">
                                             <div class="accordion-body category">
-                                                <div class="each-category">
-                                                    <span>Furniture</span>
-                                                    <p>8</p>
-                                                </div>
-                                                <div class="each-category">
-                                                    <span>Coffee & Tables</span>
-                                                    <p>1</p>
-                                                </div>
-                                                <div class="each-category">
-                                                    <span>Lighting</span>
-                                                    <p>3</p>
-                                                </div>
-                                                <div class="each-category">
-                                                    <span>Decoration</span>
-                                                    <p>5</p>
-                                                </div>
+                                                @foreach (var category in Model.Categories)
+                                            {
+                                            
+                                                    <div class="each-category" data-id="@category.Id">
+                                                        <a asp-action="Index" asp-route-id="@category.products.FirstOrDefault().Id">
+                                                        <span>@category.Name</span>
+                                                        </a>
+                                                      
+                                                        <p>@category.products.Count</p>
+                                                    </div>
+                                               
+                                               
+                                            }
                                                 <div class="each-category">
                                                     <span>Electronics</span>
                                                     <p>1</p>
@@ -260,24 +257,22 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="each-cards">
+                            @foreach (var product in Model.Products.Take(5))
+                        {
+                             <div class="each-cards" data-id="@product.CategoryId">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-6">
                                             <div class="left">
                                                 <p>Top</p>
-                                                <img src="./assets/imgs/Shop/shop1.jpeg" alt="">
+                                                <img src="~/assets/imgs/Home/@product.productImages.Where(m=>m.IsMain).FirstOrDefault().Image" alt="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 order-last">
                                             <div class="middle">
-                                                <span>Women</span>
-                                                <h6>Beige metal hoop tote bag</h6>
-                                                <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-                                                    luctus metus
-                                                    libero eu augue. Morbi purus libero, faucibus adipiscing. Sed
-                                                    lectus.
+                                               <h5>@product.Category.Name</h5>
+                                                <h6>@product.Title</h6>
+                                                <p>@product.Description
                                                 </p>
                                                 <button style="background-color: #333333;"></button>
                                                 <button style="background-color: #3399cc;"></button>
@@ -287,7 +282,7 @@
                                         </div>
                                         <div class="col-md-3 col-6 order-md-last order-lg-last">
                                             <div class="right">
-                                                <span>$75.00–$80.00</span>
+                                                <span>$@product.Price</span>
                                                 <div class="stars">
                                                     <i class="fa-solid fa-star" style="color: #fcb941;"></i>
                                                     <i class="fa-solid fa-star" style="color: #fcb941;"></i>
@@ -312,189 +307,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="each-cards">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6 col-md-3 col-lg-3">
-                                            <div class="left">
-                                                <img src="./assets/imgs/Shop/shop2.jpeg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 order-last">
-                                            <div class="middle">
-                                                <span>Women</span>
-                                                <h6>Beige metal hoop tote bag</h6>
-                                                <p>Morbi purus libero, faucibus adipiscing, commodo quis, gravida id,
-                                                    est.
-                                                    Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at
-                                                    felis. Vestibulum volutpat, lacus...</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-6 order-md-last order-lg-last">
-                                            <div class="right">
-                                                <span>$55.00</span>
-                                                <div class="stars">
-                                                    <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <p class="reviews">( 2 Reviews )</p>
-                                                </div>
-                                                <div class="icons">
-                                                    <div class="left-icon">
-                                                        <i class="fa-solid fa-binoculars"></i>
-                                                        <span>quick view</span>
-                                                    </div>
-                                                    <div class="right-icon">
-                                                        <i class="fa-regular fa-heart"></i>
-                                                        <span>wishlist</span>
-                                                    </div>
-                                                </div>
-                                                <button><i class="fa-solid fa-cart-plus"></i></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-cards">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6 col-md-3 col-lg-3">
-                                            <div class="left">
-                                                <img src="./assets/imgs/Shop/shop3.jpeg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 order-last">
-                                            <div class="middle">
-                                                <span>Women</span>
-                                                <h6>Beige V neck button cardigan</h6>
-                                                <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-                                                    luctus metus libero eu augue. Morbi purus libero, faucibus
-                                                    adipiscing.
-                                                    Sed lectus.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-6 order-md-last order-lg-last">
-                                            <div class="right">
-                                                <span>$72.00</span>
-                                                <div class="stars">
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <p class="reviews">( 2 Reviews )</p>
-                                                </div>
-                                                <div class="icons">
-                                                    <div class="left-icon">
-                                                        <i class="fa-solid fa-binoculars"></i>
-                                                        <span>quick view</span>
-                                                    </div>
-                                                    <div class="right-icon">
-                                                        <i class="fa-regular fa-heart"></i>
-                                                        <span>wishlist</span>
-                                                    </div>
-                                                </div>
-                                                <button><i class="fa-solid fa-cart-plus"></i></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-cards">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6 col-md-3 col-lg-3">
-                                            <div class="left">
-                                                <img src="./assets/imgs/Shop/shop4.jpeg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 order-last">
-                                            <div class="middle">
-                                                <span>Women</span>
-                                                <h6>Black denim dungaree dress</h6>
-                                                <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-                                                    luctus metus libero eu augue. Morbi purus libero, faucibus
-                                                    adipiscing.
-                                                    Sed lectus.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-6 order-md-last order-lg-last">
-                                            <div class="right">
-                                                <span>$60.00</span>
-                                                <div class="stars">
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <p class="reviews">( 2 Reviews )</p>
-                                                </div>
-                                                <div class="icons">
-                                                    <div class="left-icon">
-                                                        <i class="fa-solid fa-binoculars"></i>
-                                                        <span>quick view</span>
-                                                    </div>
-                                                    <div class="right-icon">
-                                                        <i class="fa-regular fa-heart"></i>
-                                                        <span>wishlist</span>
-                                                    </div>
-                                                </div>
-                                                <button><i class="fa-solid fa-cart-plus"></i></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-cards">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6 col-md-3 col-lg-3">
-                                            <div class="left">
-                                                <img src="./assets/imgs/Shop/shop5.jpeg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 order-last">
-                                            <div class="middle">
-                                                <span>Boots, Shoes, Women</span>
-                                                <h6>Black faux leather chain trim sandals</h6>
-                                                <p>Morbi purus libero, faucibus adipiscing, commodo quis, gravida id,
-                                                    est.
-                                                    Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at
-                                                    felis. Vestibulum volutpat, lacus...</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-6 order-md-last order-lg-last">
-                                            <div class="right">
-                                                <span>$90.00</span>
-                                                <div class="stars">
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                    <p class="reviews">( 2 Reviews )</p>
-                                                </div>
-                                                <div class="icons">
-                                                    <div class="left-icon">
-                                                        <i class="fa-solid fa-binoculars"></i>
-                                                        <span>quick view</span>
-                                                    </div>
-                                                    <div class="right-icon">
-                                                        <i class="fa-regular fa-heart"></i>
-                                                        <span>wishlist</span>
-                                                    </div>
-                                                </div>
-                                                <button><i class="fa-solid fa-cart-plus"></i></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        }
+                           
+                           
                             <nav aria-label="Page navigation example" class="pagination">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item disabled">
