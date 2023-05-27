@@ -1,4 +1,4 @@
-﻿
+﻿@model BlogVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -44,169 +44,40 @@
                 <div class="row">
                     <div class="col9">
                         <div class="left">
-                            <div class="each-content">
-                                <div class="up">
-                                    <img src="./assets/imgs/Blog/blog-bigP-1.jpeg" alt="">
-                                </div>
-                                <div class="down">
-                                    <div class="first">
-                                        <span>by</span>
-                                        <span class="rightC">John Doe</span>
-                                        <span class="rightC padding-part">Sep 22, 2020</span>
-                                        <span>0 Comments</span>
+                            @foreach (var blog in Model.Blogs)
+                            {
+                                <div class="each-content">
+                                    <div class="up">
+                                        <img src="./assets/imgs/Blog/@blog.Image" alt="">
                                     </div>
-                                    <div class="second">
-                                        <h3>Sed adipiscing ornare.</h3>
-                                    </div>
-                                    <div class="third">
-                                        <span>in</span>
-                                        <span>Lifestyle,</span>
-                                        <span>Shopping</span>
-                                    </div>
-                                    <div class="fourth">
-                                        <p>
-                                            Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque,
-                                            aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula
-                                            sollicitudin
-                                            laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu
-                                            nibh
-                                            ...
-                                        </p>
-                                    </div>
-                                    <div class="fifth">
-                                        <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-content">
-                                <div class="up">
-                                    <img src="~/assets/imgs/Blog/blog-bigP-2.jpeg" alt="">
-                                </div>
-                                <div class="down">
-                                    <div class="first">
-                                        <span>by</span>
-                                        <span class="rightC">Jane Doe</span>
-                                        <span class="rightC padding-part">Sep 12, 2020</span>
-                                        <span>4 Comments</span>
-                                    </div>
-                                    <div class="second">
-                                        <h3>Fusce pellentesque suscipit.</h3>
-                                    </div>
-                                    <div class="third">
-                                        <span>in</span>
-                                        <span>Travel</span>
-                                    </div>
-                                    <div class="fourth">
-                                        <p>
-                                            Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae,
-                                            eu
-                                            vulputate magna eros eu erat. Aliquam erat volutpat eget felis ...
-                                        </p>
-                                    </div>
-                                    <div class="fifth">
-                                        <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-content">
-                                <div class="up">
-                                    <img src="./assets/imgs/Blog/blog-bigP-3.jpeg" alt="">
-                                </div>
-                                <div class="down">
-                                    <div class="first">
-                                        <span>by</span>
-                                        <span class="rightC">John Doe</span>
-                                        <span class="rightC padding-part">Sep 11, 2020</span>
-                                        <span>0 Comments</span>
-                                    </div>
-                                    <div class="second">
-                                        <h3>Donec nec justo eget felis facilisis fermentum.</h3>
-                                    </div>
-                                    <div class="third">
-                                        <span>in</span>
-                                        <span>Hobbies</span>
-                                    </div>
-                                    <div class="fourth">
-                                        <p>
-                                            Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                                            facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque
-                                            lectus. Donec consectetuer ligula vulputate sem ...
-                                        </p>
-                                    </div>
-                                    <div class="fifth">
-                                        <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="each-content">
-                                <div class="up">
-                                    <img src="./assets/imgs/Blog/blog-bigP-4.jpeg" alt="">
-                                    <!-- <div class="large-icon">
-                                        <div class="icon">
-                                            <a href="">
-                                                <i class="fa-solid fa-play"></i>
-                                            </a>
+                                    <div class="down">
+                                        <div class="first">
+                                            <span>by</span>
+                                            <span class="rightC">@blog.BlogAuthor.FullName</span>
+                                            <span class="rightC padding-part"> @blog.CreateDate.ToString("dd-MM-yyyy")</span>
+                                            <span>0 Comments</span>
                                         </div>
-                                    </div> -->
-                                </div>
-                                <div class="down">
-                                    <div class="first">
-                                        <span>by</span>
-                                        <span class="rightC">John Doe</span>
-                                        <span class="rightC padding-part">Sep 21, 2020</span>
-                                        <span>0 Comments</span>
-                                    </div>
-                                    <div class="second">
-                                        <h3>Vivamus vestibulum ngtulla necante.</h3>
-                                    </div>
-                                    <div class="third">
-                                        <span>in</span>
-                                        <span>Lifestyle</span>
-                                    </div>
-                                    <div class="fourth">
-                                        <p>
-                                            Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est.
-                                            Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu
-                                            pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu,
-                                            fermentum eturna.
-                                        </p>
-                                    </div>
-                                    <div class="fifth">
-                                        <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
+                                        <div class="second">
+                                            <h3>@blog.Title</h3>
+                                        </div>
+                                        <div class="third">
+                                            <span>in</span>
+                                            <span>Lifestyle,</span>
+                                            <span>Shopping</span>
+                                        </div>
+                                        <div class="fourth">
+                                            <p>
+                                              @blog.Description
+                                            </p>
+                                        </div>
+                                        <div class="fifth">
+                                            <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="each-content">
-                                <div class="up">
-                                    <img src="./assets/imgs/Blog/blog-bigP-5.jpeg" alt="">
-                                </div>
-                                <div class="down">
-                                    <div class="first">
-                                        <span>by</span>
-                                        <span class="rightC">John Doe</span>
-                                        <span class="rightC padding-part">Sep 18, 2020</span>
-                                        <span>3 Comments</span>
-                                    </div>
-                                    <div class="second">
-                                        <h3>Utaliquam sollicitghrhudin leo</h3>
-                                    </div>
-                                    <div class="third">
-                                        <span>in</span>
-                                        <span>Lifestyle,</span>
-                                        <span>Fashion</span>
-                                    </div>
-                                    <div class="fourth">
-                                        <p>
-                                            Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-                                            leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas,
-                                            ante et vulputate volutpat, uctus metus libero eu augue.
-                                        </p>
-                                    </div>
-                                    <div class="fifth">
-                                        <span>Continue Reading<i class="fa-solid fa-arrow-right-long"></i></span>
-                                    </div>
-                                </div>
-                            </div>
+                            }
+                           
+                           
                         </div>
                     </div>
                     <div class="col3">

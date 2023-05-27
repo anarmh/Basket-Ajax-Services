@@ -15,5 +15,7 @@ namespace Molla_template_with_backend.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<BlogAuthor> BlogAuthors { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }   
 }
