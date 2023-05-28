@@ -8,12 +8,7 @@
 }
 
 @section Css{
-     <link rel="stylesheet" href="~/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <link rel="stylesheet" href="~/assets/scss/Home/home.css">
 }
     <main>
@@ -185,22 +180,25 @@
                 <div class="details">
                     <div class="for-featured allcontents" data-id="11">
                         <div class="container">
-                            <div class="products owl-carousel owl-theme">
+                            <div class="products owl-carousel owl-theme ">
+                               
                                 @foreach (var product in Model.Products.Take(6))
                             {
-                                 <a href="./productdetail.html">
+                                 <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
                                     <div data-id="1" class="cards">
                                         <div class="img-part">
                                             <p class="new">Sale</p>
                                             <p class="top">Top</p>
+                                           
                                             <img src="~/assets/imgs/Home/@product.productImages.FirstOrDefault().Image" class="close-hovered" alt="">
-                                            <img src="~/assets/imgs/Home/featured1-hover.jpeg" class="open-hovered"
+                                            <img src="~/assets/imgs/Home/@product.productImages.LastOrDefault().Image" class="open-hovered"
                                                 alt="">
                                             <i class="fa-regular fa-heart open-hovered heart"></i>
                                             <div class="options-part">
                                                 <i class="fa-solid fa-cart-arrow-down addToCart"></i>
                                                 <span>|</span>
-                                                <i class="fa-solid fa-binoculars"></i>
+                                                     <i class="fa-solid fa-binoculars"></i>
+                                               
                                             </div>
                                         </div>
                                         <div class="text-part">
@@ -652,40 +650,41 @@
                             {
                                 <div class="for-accessories allcontents d-none" data-id="@product.CategoryId">
                                     <div class="container">
-                                        <div class="trending-products owl-carousel owl-theme">
-                                            <a href="./productdetail.html">
-                                                <div data-id="1" class="cards">
-                                                    <div class="img-part">
-                                                        <p class="new">Sale</p>
-                                                        <p class="top">Top</p>
-                                                        <img src="~/assets/imgs/Home/@product.productImages.Where(m=>m.IsMain).FirstOrDefault().Image "
-                                                         class="close-hovered" alt="">
-                                                        <img src="~/assets/imgs/Home/featured1-hover.jpeg"
-                                                         class="open-hovered" alt="">
-                                                        <i class="fa-regular fa-heart open-hovered heart"></i>
-                                                        <div class="options-part">
-                                                            <i class="fa-solid fa-cart-arrow-down addToCart"></i>
-                                                            <span>|</span>
-                                                            <i class="fa-solid fa-binoculars"></i>
+                                        <div class="trending-products owl-carousel owl-theme ">
+                                           
+                                                <a href="./productdetail.html">
+                                                    <div data-id="1" class="cards">
+                                                        <div class="img-part">
+                                                            <p class="new">Sale</p>
+                                                            <p class="top">Top</p>
+                                                            <img src="~/assets/imgs/Home/@product.productImages.Where(m=>m.IsMain).FirstOrDefault().Image "
+                                                             class="close-hovered" alt="">
+                                                            <img src="~/assets/imgs/Home/featured1-hover.jpeg"
+                                                             class="open-hovered" alt="">
+                                                            <i class="fa-regular fa-heart open-hovered heart"></i>
+                                                            <div class="options-part">
+                                                                <i class="fa-solid fa-cart-arrow-down addToCart"></i>
+                                                                <span>|</span>
+                                                                <i class="fa-solid fa-binoculars"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-part">
+                                                            <p class="mini-detail"><span>@product.Category.Name</span>, @product.Title</p>
+                                                            <span>
+                                                                @product.Description
+                                                            </span>
+                                                            <p class="cost">$@product.Price </p>
+                                                            <div class="stars">
+                                                                <i class="fa-solid fa-star" style="color: #fcb941;"></i>
+                                                                <i class="fa-solid fa-star" style="color: #fcb941;"></i>
+                                                                <i class="fa-solid fa-star" style="color: #fcb941;"></i>
+                                                                <i class="fa-solid fa-star" style="color: #fcb941;"></i>
+                                                                <i class="fa-solid fa-star" style="color: #cccccc;"></i>
+                                                            </div>
+                                                            <p class="reviews">( 2 Reviews )</p>
                                                         </div>
                                                     </div>
-                                                    <div class="text-part">
-                                                        <p class="mini-detail"><span>@product.Category.Name</span>, @product.Title</p>
-                                                        <span>
-                                                           @product.Description
-                                                        </span>
-                                                        <p class="cost">$@product.Price </p>
-                                                        <div class="stars">
-                                                            <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                            <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                            <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                            <i class="fa-solid fa-star" style="color: #fcb941;"></i>
-                                                            <i class="fa-solid fa-star" style="color: #cccccc;"></i>
-                                                        </div>
-                                                        <p class="reviews">( 2 Reviews )</p>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                                </a>
                                            
                                         </div>
                                     </div>
@@ -1098,12 +1097,6 @@
     </main>
 
      @section Scripts{
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-         <script src="~/assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://kit.fontawesome.com/ba8f3ff677.js" crossorigin="anonymous"></script>
+     
         <script src="~/assets/js/home.js"></script>
      }

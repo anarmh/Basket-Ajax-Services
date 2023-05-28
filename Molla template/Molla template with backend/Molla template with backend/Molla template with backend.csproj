@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\admin\.vscode\launch.json" />
     <Content Include="wwwroot\node_modules\.package-lock.json" />
     <Content Include="wwwroot\node_modules\animate.css\animate.compat.css" />
     <Content Include="wwwroot\node_modules\animate.css\animate.css" />

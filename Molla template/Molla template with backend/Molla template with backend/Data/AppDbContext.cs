@@ -18,5 +18,7 @@ namespace Molla_template_with_backend.Data
         public DbSet<BlogAuthor> BlogAuthors { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+
     }   
 }

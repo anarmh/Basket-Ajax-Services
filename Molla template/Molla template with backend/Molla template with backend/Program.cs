@@ -14,6 +14,7 @@ builder.Services.AddScoped<ISliderInfoService, SliderInfoService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<ILayoutService, LayoutService>();
 
 
 
@@ -30,6 +31,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+ );
 
 app.MapControllerRoute(
     name: "default",

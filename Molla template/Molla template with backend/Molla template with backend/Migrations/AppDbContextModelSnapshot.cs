@@ -175,6 +175,25 @@ namespace Molla_template_with_backend.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("Molla_template_with_backend.Models.Setting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("Molla_template_with_backend.Models.Slider", b =>
                 {
                     b.Property<int>("Id")
