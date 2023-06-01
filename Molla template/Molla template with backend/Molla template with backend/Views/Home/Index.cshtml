@@ -954,19 +954,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @foreach (var product in Model.Products.Take(6))
-                                    {
-                                         <div class="for-accessories allcontents d-none" data-id="@product.CategoryId">
+                                        
+                                    
+                                         <div class="for-accessories allcontents d-none" data-id="222">
                                             <div class="container">
                                                 <div class="top-products owl-carousel owl-theme">
-                                                    <a href="./productdetail.html">
-                                                        <div data-id="1" class="cards">
+                                                @foreach (var product in Model.Products.Take(5))
+                                                {
+                                                    <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
+                                                        <div data-id="@product.Category.Id" class="cards">
                                                             <div class="img-part">
                                                                 <p class="new">Sale</p>
                                                                 <p class="top">Top</p>
                                                                 <img src="~/assets/imgs/Home/@product.productImages.Where(m=>m.IsMain).FirstOrDefault().Image"
                                                                     class="close-hovered" alt="">
-                                                                <img src="~/assets/imgs/Home/featured1-hover.jpeg"
+                                                                <img src="~/assets/imgs/Home/@product.productImages.Where(m=>m.IsMain).FirstOrDefault().Image"
                                                                     class="open-hovered" alt="">
                                                                 <i class="fa-regular fa-heart open-hovered heart"></i>
                                                                 <div class="options-part">
@@ -997,11 +999,11 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                 
+                                                }
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                   
                                        
                                     </div>
                                 </div>

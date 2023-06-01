@@ -14,7 +14,7 @@ namespace Molla_template_with_backend.Services
         }
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            return await _context.Products.Include(m=>m.productImages).Where(m=>!m.SoftDelete).ToListAsync();
+            return await _context.Products.Include(m=>m.productImages).Include(m=>m.Category).Where(m=>!m.SoftDelete).ToListAsync();
         }
     }
 }

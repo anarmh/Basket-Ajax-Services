@@ -227,4 +227,5 @@ $(function () {
             navbar.classList.remove("sticky");
         }
     }
+
 })

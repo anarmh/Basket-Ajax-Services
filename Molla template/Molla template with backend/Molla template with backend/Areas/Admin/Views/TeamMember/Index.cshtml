@@ -1,0 +1,46 @@
+﻿@model List<TeamMemberVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div>
+                <a class="btn btn-outline-success">Create</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var member in Model)
+                        {
+                            <tr>
+                                <td> <img src="~/assets/imgs/About/@member.Image" style="width:100px;height:120px;" /></td>
+                                <td>@member.FullName</td>
+                                <td>@member.Position</td>
+                                <td>@member.Description</td>
+                                <td class="">
+                                    <a asp-action="Detail" asp-route-id="@member.Id" class="btn btn-outline-info d-block">Detail</a>
+                                    <a class="btn btn-outline-warning d-block my-2" >Edit</a>
+                                    <a class="btn  btn-outline-danger d-block">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

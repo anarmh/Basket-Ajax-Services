@@ -1,6 +1,8 @@
 ﻿@inject ILayoutService layoutService
+
 @{
     LayoutVM datas = layoutService.GetSettingsAsync();
+   
 }
 
 <!DOCTYPE html>
@@ -97,7 +99,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-2 logo">
-                        <a href="./home.html"><img src="~/assets/imgs/Home/@datas.Settings["HeaderLogo"]" alt=""></a>
+                        <a asp-controller="Home" asp-action="Index"><img src="~/assets/imgs/Home/@datas.Settings["HeaderLogo"]" alt=""></a>
                     </div>
                     <div class="col-6 search">
                         <i class="fa-solid fa-magnifying-glass search-btn"></i>
